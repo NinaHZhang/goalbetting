@@ -1,0 +1,242 @@
+.mygoals-main {
+  flex: 1;
+  background: #fafbfc;
+  min-height: 100vh;
+  padding: 40px 48px 0 48px;
+}
+
+.mygoals-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mygoals-create-btn {
+  background: #0a0914;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.13rem;
+  font-weight: 600;
+  padding: 12px 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.mygoals-create-btn:hover {
+  background: #18181b;
+}
+
+.mygoals-subtitle {
+  color: #6b7280;
+  font-size: 1.1rem;
+  margin: 0 0 32px 0;
+}
+
+.mygoals-filters {
+  display: flex;
+  gap: 0;
+  margin-bottom: 28px;
+  background: #f3f4f6;
+  border-radius: 24px;
+  padding: 4px 0;
+  width: fit-content;
+}
+.mygoals-filter {
+  background: none;
+  border: none;
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: #222;
+  padding: 10px 28px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.mygoals-filter.active {
+  background: #fff;
+  color: #222;
+  box-shadow: 0 1px 2px rgba(16,30,54,0.04);
+}
+
+.mygoals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.mygoals-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1.5px solid #e5e7eb;
+  box-shadow: 0 1px 2px rgba(16,30,54,0.04);
+  padding: 20px 22px 16px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  transition: box-shadow 0.2s;
+}
+.mygoals-card:hover {
+  box-shadow: 0 4px 24px rgba(34, 197, 94, 0.10), 0 1.5px 4px rgba(16,30,54,0.08);
+}
+.mygoals-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+.mygoals-card-title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin-bottom: 1px;
+}
+.mygoals-card-desc {
+  color: #a1a1aa;
+  font-size: 0.93rem;
+  margin-bottom: 4px;
+}
+.mygoals-card-tags {
+  display: flex;
+  gap: 8px;
+}
+.mygoals-card-difficulty, .mygoals-card-status {
+  font-size: 0.92rem;
+  padding: 3px 10px;
+}
+.mygoals-card-progress-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #222;
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+.mygoals-card-progress-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.mygoals-card-progress-percent {
+  color: #222;
+  font-size: 0.95rem;
+}
+.mygoals-card-info-bets {
+  color: #a1a1aa;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.mygoals-card-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1px;
+}
+.mygoals-card-progress-bar-inner {
+  height: 100%;
+  border-radius: 8px;
+  background: #0a0914;
+  transition: width 0.3s;
+}
+.mygoals-card-info-row, .mygoals-card-info-left {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+.mygoals-card-bets-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+  font-size: 0.97rem;
+  margin-bottom: 0;
+  flex: 1;
+}
+.mygoals-card-for {
+  color: #22c55e;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.mygoals-card-against {
+  color: #e11d48;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.mygoals-card-actions-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 0;
+  flex: 1;
+}
+.mygoals-card-bets-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+.mygoals-card-proof {
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 0.97rem;
+  color: #18181b;
+  font-weight: 500;
+  padding: 7px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.2s, border 0.2s;
+}
+.mygoals-card-proof:hover {
+  background: #f5f6fa;
+  border: 1.5px solid #d1d5db;
+}
+.mygoals-card-bottom-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+.mygoals-card-update, .mygoals-card-details {
+  flex: 1;
+  padding: 9px 0;
+  background: #0a0914;
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-size: 0.97rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.mygoals-card-update:hover, .mygoals-card-details:hover {
+  background: #18181b;
+}
+.mygoals-card-bettors-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.mygoals-card-bettors-row .mygoals-card-info-bets {
+  margin-left: auto;
+}
+.white-box {
+  background: #fff !important;
+  color: #18181b !important;
+  border: 1.5px solid #e5e7eb !important;
+  font-weight: 500;
+  transition: background 0.2s, border 0.2s;
+}
+.white-box:hover {
+  background: #f5f6fa !important;
+  border: 1.5px solid #d1d5db !important;
+} 
