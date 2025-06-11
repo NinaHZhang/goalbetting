@@ -1,30 +1,82 @@
-import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import Dashboard from './components/Dashboard';
-import BettingRoom from './components/BettingRoom';
-import ActivityFeed from './components/ActivityFeed';
-import Leaderboard from './components/Leaderboard';
-import MyGoals from './components/MyGoals';
-import './App.css';
+import Dashboard from './pages/Dashboard';
+import BettingRoom from './pages/BettingRoom';
+import Leaderboard from './pages/Leaderboard';
+import MyGoals from './pages/MyGoals';
+import Profile from './components/Profile';
+import Landing from './pages/Landing';
+import Login from './pages/Login';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('Dashboard');
-
   return (
-    <div className="app-layout">
-      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-      {activeTab === 'Betting Room' ? (
-        <BettingRoom />
-      ) : activeTab === 'Activity Feed' ? (
-        <ActivityFeed />
-      ) : activeTab === 'Leaderboard' ? (
-        <Leaderboard />
-      ) : activeTab === 'My Goals' ? (
-        <MyGoals />
-      ) : (
-        <Dashboard />
-      )}
-    </div>
+    <Router>
+      <Routes>
+        {/* Public routes */}
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+
+        {/* Protected routes */}
+        <Route
+          path="/dashboard"
+          element={
+            <div className="flex">
+              <Sidebar onNewGoal={() => {}} />
+              <div className="flex-1 ml-64">
+                <Dashboard />
+              </div>
+            </div>
+          }
+        />
+        <Route
+          path="/betting"
+          element={
+            <div className="flex">
+              <Sidebar onNewGoal={() => {}} />
+              <div className="flex-1 ml-64">
+                <BettingRoom />
+              </div>
+            </div>
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            <div className="flex">
+              <Sidebar onNewGoal={() => {}} />
+              <div className="flex-1 ml-64">
+                <Leaderboard />
+              </div>
+            </div>
+          }
+        />
+        <Route
+          path="/goals"
+          element={
+            <div className="flex">
+              <Sidebar onNewGoal={() => {}} />
+              <div className="flex-1 ml-64">
+                <MyGoals />
+              </div>
+            </div>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <div className="flex">
+              <Sidebar onNewGoal={() => {}} />
+              <div className="flex-1 ml-64">
+                <Profile />
+              </div>
+            </div>
+          }
+        />
+
+        {/* Redirect any unknown routes to landing page */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
 }
 

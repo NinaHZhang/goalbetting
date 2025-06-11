@@ -1,59 +1,61 @@
 import { FaHome, FaBullseye, FaChartLine, FaTrophy, FaPlus, FaUser } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 
 type SidebarProps = {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
+  onNewGoal: () => void;
 };
 
-const tabs = [
-  { label: 'Dashboard', icon: <FaHome /> },
-  { label: 'Betting Room', icon: <FaBullseye /> },
-  { label: 'Activity Feed', icon: <FaChartLine /> },
-  { label: 'Leaderboard', icon: <FaTrophy /> },
-  { label: 'My Goals', icon: <FaPlus /> },
-  { label: 'Profile', icon: <FaUser /> },
-];
+const Sidebar = ({ onNewGoal }: SidebarProps) => {
+  const navItems = [
+    { icon: <FaHome />, label: 'Dashboard', path: '/' },
+    { icon: <FaBullseye />, label: 'Betting Room', path: '/betting' },
+    { icon: <FaChartLine />, label: 'Leaderboard', path: '/leaderboard' },
+    { icon: <FaTrophy />, label: 'My Goals', path: '/goals' },
+  ];
 
-const Sidebar = ({ activeTab, setActiveTab }: SidebarProps) => {
   return (
-    <aside className="sidebar">
-      <div className="sidebar-header">
-        <h2>
-          <span style={{ color: '#22c55e', fontWeight: 700 }}>Bet</span>
-          You
-          <span style={{ color: '#e11d48', fontWeight: 700 }}>Can't</span>!
-        </h2>
-        <div className="sidebar-balance-rank">
-          <div className="sidebar-balance">
-            <span>Balance</span>
-            <span className="sidebar-balance-value">$2450</span>
-          </div>
-          <div className="sidebar-rank">
-            <span>Rank</span>
-            <span className="sidebar-rank-value">#3</span>
-          </div>
-        </div>
+    <aside className="w-64 bg-white border-r border-gray-200 h-screen fixed left-0 top-0">
+      <div className="p-6">
+        <h1 className="text-2xl font-bold">
+          <span className="text-green-600">Bet</span>
+          <span className="text-red-600">YouCan't!</span>
+        </h1>
       </div>
-      <nav className="sidebar-nav">
-        <ul>
-          {tabs.map((tab) => (
-            <li
-              key={tab.label}
-              className={
-                `${tab.label === 'Dashboard' ? 'dashboard' : ''}` +
-                `${tab.label === 'Betting Room' ? 'betting-room' : ''}` +
-                `${tab.label === 'Activity Feed' ? 'activity-feed' : ''}` +
-                `${tab.label === 'Leaderboard' ? 'leaderboard' : ''}` +
-                `${tab.label === 'My Goals' ? 'my-goals' : ''}` +
-                `${tab.label === 'Profile' ? 'profile' : ''}` +
-                (activeTab === tab.label ? ' active' : '')
-              }
-              onClick={() => setActiveTab(tab.label)}
-            >
-              {tab.icon} {tab.label}
+      <nav className="px-4">
+        <ul className="space-y-2">
+          {navItems.map((item) => (
+            <li key={item.path}>
+              <NavLink
+                to={item.path}
+                className={({ isActive }: { isActive: boolean }) =>
+                  `flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${
+                    isActive
+                      ? 'bg-blue-50 text-blue-600'
+                      : 'text-gray-600 hover:bg-blue-50 hover:text-blue-600'
+                  }`
+                }
+              >
+                <span className="text-lg">{item.icon}</span>
+                <span>{item.label}</span>
+              </NavLink>
             </li>
           ))}
+          <li>
+            <NavLink
+              to="/profile"
+              className={({ isActive }: { isActive: boolean }) =>
+                `flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${
+                  isActive
+                    ? 'bg-red-50 text-red-600'
+                    : 'text-gray-600 hover:bg-red-50 hover:text-red-600'
+                }`
+              }
+            >
+              <span className="text-lg"><FaUser /></span>
+              <span>Profile</span>
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </aside>
