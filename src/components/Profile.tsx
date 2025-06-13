@@ -1,5 +1,4 @@
-import React from 'react';
-import { FaCamera, FaUserEdit, FaUsers } from 'react-icons/fa';
+import { FaCamera, FaUserEdit } from 'react-icons/fa';
 
 const groupMembers = [
   { initial: 'E' },
@@ -62,7 +61,7 @@ const Profile = () => {
       <div style={{ background: '#fff', borderRadius: 24, border: '1.5px solid #ececec', padding: '36px 56px', marginBottom: 32, display: 'flex', flexDirection: 'column', gap: 18, width: '100%', boxSizing: 'border-box' }}>
         <div style={{ fontSize: '1.3rem', fontWeight: 500, marginBottom: 18 }}>Current Group</div>
         <div style={{ fontWeight: 700, fontSize: '1.13rem', marginBottom: 2, display: 'flex', alignItems: 'center', gap: 8 }}>
-          College Friends Productivity <span style={{ color: '#facc15', fontSize: 20 }}>👑</span>
+          College Friends Productivity 👑
         </div>
         <div style={{ color: '#6b7280', fontSize: '1.05rem', marginBottom: 2 }}>8 members • Current leader: Emma</div>
         <div style={{ color: '#6b7280', fontSize: '1.05rem', marginBottom: 8 }}>Prize: Winner gets dinner paid by group</div>

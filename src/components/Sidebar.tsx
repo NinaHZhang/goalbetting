@@ -1,61 +1,52 @@
-import { FaHome, FaBullseye, FaChartLine, FaTrophy, FaPlus, FaUser } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import { FaHome, FaBullseye, FaChartLine, FaTrophy, FaUser } from 'react-icons/fa';
+import { NavLink, useLocation } from 'react-router-dom';
 import './Sidebar.css';
 
-type SidebarProps = {
-  onNewGoal: () => void;
-};
+const navItems = [
+  { icon: <FaHome />, label: 'Dashboard', path: '/dashboard', className: 'dashboard' },
+  { icon: <FaBullseye />, label: 'Betting Room', path: '/betting', className: 'betting-room' },
+  { icon: <FaChartLine />, label: 'Leaderboard', path: '/leaderboard', className: 'leaderboard' },
+  { icon: <FaTrophy />, label: 'My Goals', path: '/goals', className: 'my-goals' },
+  { icon: <FaUser />, label: 'Profile', path: '/profile', className: 'profile' },
+];
 
-const Sidebar = ({ onNewGoal }: SidebarProps) => {
-  const navItems = [
-    { icon: <FaHome />, label: 'Dashboard', path: '/' },
-    { icon: <FaBullseye />, label: 'Betting Room', path: '/betting' },
-    { icon: <FaChartLine />, label: 'Leaderboard', path: '/leaderboard' },
-    { icon: <FaTrophy />, label: 'My Goals', path: '/goals' },
-  ];
-
+const Sidebar = () => {
+  const location = useLocation();
   return (
-    <aside className="w-64 bg-white border-r border-gray-200 h-screen fixed left-0 top-0">
-      <div className="p-6">
-        <h1 className="text-2xl font-bold">
-          <span className="text-green-600">Bet</span>
-          <span className="text-red-600">YouCan't!</span>
-        </h1>
+    <aside className="sidebar">
+      <div className="sidebar-header">
+        <h2 style={{ fontSize: '1.4rem', fontWeight: 700, margin: '0 0 20px 0' }}>
+          <span style={{ color: '#22c55e' }}>Bet</span>
+          <span style={{ color: '#222' }}>You</span>
+          <span style={{ color: '#e11d48' }}>Can't</span>
+          <span style={{ color: '#222' }}>!</span>
+        </h2>
+        <div className="sidebar-balance-rank">
+          <div className="sidebar-balance">
+            <span>Balance</span>
+            <span className="sidebar-balance-value">$2450</span>
+          </div>
+          <div className="sidebar-rank">
+            <span>Rank</span>
+            <span className="sidebar-rank-value">#3</span>
+          </div>
+        </div>
       </div>
-      <nav className="px-4">
-        <ul className="space-y-2">
-          {navItems.map((item) => (
-            <li key={item.path}>
-              <NavLink
-                to={item.path}
-                className={({ isActive }: { isActive: boolean }) =>
-                  `flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${
-                    isActive
-                      ? 'bg-blue-50 text-blue-600'
-                      : 'text-gray-600 hover:bg-blue-50 hover:text-blue-600'
-                  }`
-                }
+      <nav className="sidebar-nav">
+        <ul>
+          {navItems.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <li
+                key={item.path}
+                className={item.className + (isActive ? ' active' : '')}
               >
-                <span className="text-lg">{item.icon}</span>
-                <span>{item.label}</span>
-              </NavLink>
-            </li>
-          ))}
-          <li>
-            <NavLink
-              to="/profile"
-              className={({ isActive }: { isActive: boolean }) =>
-                `flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${
-                  isActive
-                    ? 'bg-red-50 text-red-600'
-                    : 'text-gray-600 hover:bg-red-50 hover:text-red-600'
-                }`
-              }
-            >
-              <span className="text-lg"><FaUser /></span>
-              <span>Profile</span>
-            </NavLink>
-          </li>
+                <NavLink to={item.path} style={{ display: 'flex', alignItems: 'center', gap: 14, width: '100%', height: '100%' }}>
+                  {item.icon} {item.label}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </aside>

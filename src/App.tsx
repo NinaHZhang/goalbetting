@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import Dashboard from './pages/Dashboard';
-import BettingRoom from './pages/BettingRoom';
-import Leaderboard from './pages/Leaderboard';
-import MyGoals from './pages/MyGoals';
+import Dashboard from './components/Dashboard';
+import BettingRoom from './components/BettingRoom';
+import Leaderboard from './components/Leaderboard';
+import MyGoals from './components/MyGoals';
 import Profile from './components/Profile';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import JoinGroup from './pages/JoinGroup';
 
 function App() {
   return (
@@ -15,14 +17,15 @@ function App() {
         {/* Public routes */}
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
 
         {/* Protected routes */}
         <Route
           path="/dashboard"
           element={
-            <div className="flex">
-              <Sidebar onNewGoal={() => {}} />
-              <div className="flex-1 ml-64">
+            <div style={{ display: 'flex' }}>
+              <Sidebar />
+              <div style={{ flex: 1, padding: 0, marginLeft: 40 }}>
                 <Dashboard />
               </div>
             </div>
@@ -31,9 +34,9 @@ function App() {
         <Route
           path="/betting"
           element={
-            <div className="flex">
-              <Sidebar onNewGoal={() => {}} />
-              <div className="flex-1 ml-64">
+            <div style={{ display: 'flex' }}>
+              <Sidebar />
+              <div style={{ flex: 1, padding: 0, marginLeft: 24 }}>
                 <BettingRoom />
               </div>
             </div>
@@ -42,9 +45,9 @@ function App() {
         <Route
           path="/leaderboard"
           element={
-            <div className="flex">
-              <Sidebar onNewGoal={() => {}} />
-              <div className="flex-1 ml-64">
+            <div style={{ display: 'flex' }}>
+              <Sidebar />
+              <div style={{ flex: 1, padding: 0, marginLeft: 24 }}>
                 <Leaderboard />
               </div>
             </div>
@@ -53,9 +56,9 @@ function App() {
         <Route
           path="/goals"
           element={
-            <div className="flex">
-              <Sidebar onNewGoal={() => {}} />
-              <div className="flex-1 ml-64">
+            <div style={{ display: 'flex' }}>
+              <Sidebar />
+              <div style={{ flex: 1, padding: 0, marginLeft: 24 }}>
                 <MyGoals />
               </div>
             </div>
@@ -64,14 +67,15 @@ function App() {
         <Route
           path="/profile"
           element={
-            <div className="flex">
-              <Sidebar onNewGoal={() => {}} />
-              <div className="flex-1 ml-64">
+            <div style={{ display: 'flex' }}>
+              <Sidebar />
+              <div style={{ flex: 1, padding: 0, marginLeft: 24 }}>
                 <Profile />
               </div>
             </div>
           }
         />
+        <Route path="/join-group" element={<JoinGroup />} />
 
         {/* Redirect any unknown routes to landing page */}
         <Route path="*" element={<Navigate to="/" replace />} />

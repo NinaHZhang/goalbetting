@@ -16,7 +16,7 @@
 .sidebar-header h2 {
   font-size: 1.4rem;
   font-weight: 700;
-  margin: 0 0 24px 0;
+  margin: 0 0 24px 0px;
 }
 
 .sidebar-balance-rank {
@@ -78,10 +78,32 @@
   transition: background 0.2s, color 0.2s;
 }
 
-.sidebar-nav li.dashboard.active, .sidebar-nav li.dashboard:hover {
-  color: #3b82f6;
+.sidebar-nav li a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.sidebar-nav li a:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.sidebar-nav li.dashboard.active {
+  color: #1e40af;
   background: #e0e7ff;
 }
+
+.sidebar-nav li.dashboard.active a {
+  color: #1e40af;
+}
+
 .sidebar-nav li.betting-room.active, .sidebar-nav li.betting-room:hover {
   color: #22c55e;
   background: #e0fce7;

@@ -16,12 +16,18 @@ const Landing = () => {
           <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto">
             Turn your goals into bets. Challenge yourself and others. Win rewards and build better habits.
           </p>
-          <div className="mt-10">
+          <div className="mt-10 flex justify-center gap-4">
             <button
               onClick={() => navigate('/login')}
               className="px-8 py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors"
             >
-              Get Started
+              Log In
+            </button>
+            <button
+              onClick={() => navigate('/signup')}
+              className="px-8 py-4 bg-black text-white font-semibold rounded-xl hover:bg-gray-900 transition-colors"
+            >
+              Sign Up
             </button>
           </div>
         </div>

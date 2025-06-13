@@ -1,5 +1,5 @@
 import './MyGoals.css';
-import { FaPlus, FaClock, FaBullseye, FaCamera, FaUsers } from 'react-icons/fa';
+import { FaPlus, FaClock, FaBullseye, FaUsers } from 'react-icons/fa';
 import { useState, useRef } from 'react';
 
 const filters = ['Active Goals', 'Completed', 'All Goals'];
